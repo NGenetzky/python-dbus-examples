@@ -1,0 +1,35 @@
+version: '3'
+services:
+  dbus:
+    build: alpine-dbus
+    volumes:
+        - dbus_system_bus_socket:/var/run/dbus/
+  monitor:
+    build: alpine-dbus
+    command: monitor
+    volumes:
+        - dbus_system_bus_socket:/var/run/dbus/
+    depends_on:
+        - dbus
+  emitter:
+    build: ./
+    volumes:
+        - dbus_system_bus_socket:/var/run/dbus/
+    depends_on:
+        - dbus
+        - receiver
+  invoker:
+    build: ./
+    volumes:
+        - dbus_system_bus_socket:/var/run/dbus/
+    depends_on:
+        - dbus
+        - receiver
+  receiver:
+    build: ./
+    volumes:
+        - dbus_system_bus_socket:/var/run/dbus/
+    depends_on:
+        - dbus
+volumes:
+    dbus_system_bus_socket:
