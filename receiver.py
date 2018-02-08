@@ -2,7 +2,7 @@
 """Receiver related functionality."""
 import dbus.service
 import dbus.glib
-import gobject
+from gi.repository import GObject as gobject
 import dbus
 
 
