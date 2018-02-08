@@ -2,5 +2,6 @@ FROM alpine
 RUN apk add --no-cache \
     dbus
 COPY ./entrypoint.sh /entrypoint.sh
-VOLUME /run/dbus/system_bus_socket
+VOLUME /var/run/dbus/
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["start"]
