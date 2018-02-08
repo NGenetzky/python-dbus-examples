@@ -64,8 +64,7 @@ system bus. For system bus root permission is required.
 We claim a bus name on the chosen bus. The name should be in form of a
 domain name.
 """
-bus = dbus.SessionBus()
-# bus = dbus.SystemBus()
+bus = dbus.SystemBus()
 bus_name = dbus.service.BusName('sub.domain.tld', bus=bus)
 
 """

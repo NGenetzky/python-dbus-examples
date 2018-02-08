@@ -3,7 +3,7 @@
 import dbus
 
 """Proxy object from the Test object in receiver."""
-obj = dbus.SessionBus().get_object('sub.domain.tld', '/tld/domain/sub/Test')
+obj = dbus.SystemBus().get_object('sub.domain.tld', '/tld/domain/sub/Test')
 
 """Call a method that simply retruns a string."""
 print obj.foo(dbus_interface='tld.domain.sub.TestInterface')
